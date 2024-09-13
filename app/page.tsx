@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-100">
       <header className="px-4 lg:px-6 h-14 flex items-center border-b border-gray-800">
-        <Link className="flex items-center justify-center" href="#">
+        <Link className="flex items-center justify-center" href="/">
           <Hospital className="h-6 w-6 text-blue-400" />
           <span className="ml-2 text-xl font-bold text-blue-400">Aushadhi</span>
         </Link>
@@ -40,8 +40,9 @@ export default function Home() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button className="bg-blue-600 text-white hover:bg-blue-700" >Sign Up</Button>
-                <Button variant="outline" className="text-blue-400 border-blue-400 hover:bg-blue-400 hover:text-gray-900">Log In</Button>
+                <Button className="bg-blue-600 text-white hover:bg-blue-700" >
+                <Link href="/signup" >Sign Up</Link></Button>
+                <Button variant="outline" className="text-blue-400 border-blue-400 hover:bg-blue-400 hover:text-gray-900"><Link href="/login" >Log In</Link></Button>
               </div>
             </div>
           </div>
@@ -109,7 +110,11 @@ export default function Home() {
               <div className="w-full max-w-sm space-y-2">
                 <form className="flex space-x-2">
                   <Input className="max-w-lg flex-1 bg-gray-700 border-gray-600 text-white placeholder-gray-400" placeholder="Enter your email" type="email" />
-                  <Button type="submit" className="bg-blue-600 text-white hover:bg-blue-700">Sign Up</Button>
+                  <Button type="submit" className="bg-blue-600 text-white hover:bg-blue-700">
+                    <Link href="/signup" >
+                    Sign Up
+                    </Link>
+                    </Button>
                 </form>
               </div>
             </div>

@@ -14,7 +14,7 @@ export default function SignupPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-100">
       <header className="px-4 lg:px-6 h-14 flex items-center border-b border-gray-800">
-        <Link className="flex items-center justify-center" href="#">
+        <Link className="flex items-center justify-center" href="/">
           <Hospital className="h-6 w-6 text-blue-400" />
           <span className="ml-2 text-xl font-bold text-blue-400">Aushadhi</span>
         </Link>
@@ -150,7 +150,7 @@ export default function SignupPage() {
           <div className="text-center">
             <p className="mt-2 text-sm text-gray-400">
               Already have an account?{" "}
-              <Link href="#" className="font-medium text-blue-400 hover:text-blue-300">
+              <Link href="/login" className="font-medium text-blue-400 hover:text-blue-300">
                 Sign in
               </Link>
             </p>
@@ -158,7 +158,7 @@ export default function SignupPage() {
         </div>
       </main>
       <footer className="py-6 text-center text-sm text-gray-400 border-t border-gray-800">
-        © 2023 HealthConnect. All rights reserved.
+        © 2023 Aushadhi. All rights reserved.
       </footer>
     </div>
   )
