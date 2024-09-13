@@ -127,7 +127,7 @@ function HospitalList() {
         <TableBody>
           <TableRow>
             <TableCell>Central Hospital</TableCell>
-            <TableCell>New York, NY</TableCell>
+            <TableCell>Jaipur, Rajasthan</TableCell>
             <TableCell>Cardiology, Neurology</TableCell>
             <TableCell>
               <Button variant="outline" size="sm">
@@ -136,8 +136,8 @@ function HospitalList() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Mercy Medical Center</TableCell>
-            <TableCell>Los Angeles, CA</TableCell>
+            <TableCell>SMS Hospital</TableCell>
+            <TableCell>Jaipur, Rajasthan</TableCell>
             <TableCell>Oncology, Pediatrics</TableCell>
             <TableCell>
               <Button variant="outline" size="sm">
@@ -146,8 +146,8 @@ function HospitalList() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>City General Hospital</TableCell>
-            <TableCell>Chicago, IL</TableCell>
+            <TableCell>Mahatama Gandhi Hospital</TableCell>
+            <TableCell>Jaipur, Rajasthan</TableCell>
             <TableCell>Emergency Medicine, Surgery</TableCell>
             <TableCell>
               <Button variant="outline" size="sm">
@@ -178,9 +178,9 @@ function Appointments() {
                   <SelectValue placeholder="Select a hospital" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-700 border-gray-600">
-                  <SelectItem value="central">Central Hospital</SelectItem>
-                  <SelectItem value="mercy">Mercy Medical Center</SelectItem>
-                  <SelectItem value="city">City General Hospital</SelectItem>
+                  <SelectItem value="central">Mahatama Gandhi Hospital</SelectItem>
+                  <SelectItem value="mercy">SMS Hospital</SelectItem>
+                  <SelectItem value="city"> Central Hospital</SelectItem>
                 </SelectContent>
               </Select>
             </div>
