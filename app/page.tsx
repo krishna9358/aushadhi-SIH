@@ -539,7 +539,7 @@ export default function Home() {
 
 
         <section className="w-full mt-10 py-12 md:py-24 lg:py-32 bg-black">
-          <div className="container px-4 md:px-6">
+          {/* <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-blue-400">
@@ -571,7 +571,43 @@ export default function Home() {
 
     </div>
             </div>
-          </div>
+          </div> */}
+          <div className="container px-4 md:px-6">
+  <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+    {/* <!-- Sign-Up Form Section (Right) --> */}
+    <div className="flex-1 md:w-1/2">
+      <div className="space-y-4 text-center md:text-left">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-blue-400">
+          Ready to Get Started?
+        </h2>
+        <p className="mx-auto max-w-[600px] text-gray-300 md:text-xl">
+          Join Aushadhi today and experience seamless hospital management.
+        </p>
+        <div className="w-full max-w-sm mx-auto md:mx-0">
+          <form className="flex space-x-2">
+            <Input className="max-w-lg flex-1 bg-gray-700 border-gray-600 text-white placeholder-gray-400" placeholder="Enter your email" type="email" />
+            <Button type="submit" className="bg-blue-600 text-white hover:bg-blue-700">
+              <Link href="/signup">
+                Sign Up
+              </Link>
+            </Button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {/* <!-- Globe Section (Left) --> */}
+    <div className="flex-1 md:w-1/2 flex items-center justify-center relative">
+      <div className="max-w-7xl w-full relative overflow-hidden h-full md:h-[40rem] px-4">
+        <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
+        <div className="absolute w-full -bottom-20 h-72 md:h-full z-10">
+          <World data={sampleArcs} globeConfig={globeConfig} />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
         </section>
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-gray-800">
