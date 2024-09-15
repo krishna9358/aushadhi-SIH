@@ -33,7 +33,7 @@ export default function UserDashboard() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-900 text-gray-100">
+    <div className="flex h-screen bg-black text-gray-100">
       {/* Sidebar */}
       <aside className="w-64 bg-gray-800 p-4">
         <div className="flex items-center mb-6">

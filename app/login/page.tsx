@@ -11,7 +11,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-gray-100">
+    <div className="flex flex-col min-h-screen bg-black text-gray-100">
       <header className="px-4 lg:px-6 h-14 flex items-center border-b border-gray-800">
         <Link className="flex items-center justify-center" href="/">
           <Hospital className="h-6 w-6 text-blue-400" />
