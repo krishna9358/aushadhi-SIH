@@ -6,7 +6,7 @@ import { CardContent, Card } from "@/components/ui/card"
 import { Hospital, Clipboard, Box, UserPlus } from "lucide-react"
 import { GoogleGeminiEffect } from "@/components/ui/google-gemini-effect"
 import { Spotlight } from "@/components/ui/Spotlight"
-import React from "react"
+import React, { useState } from "react"
 import { useScroll, useTransform } from "framer-motion"
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect"
 import dynamic from "next/dynamic"
@@ -433,11 +433,11 @@ export default function Home() {
         color: colors[Math.floor(Math.random() * (colors.length - 1))],
       },
     ];
-
+    const [menuOpen, setMenuOpen] = useState(false);
     
   return (
     <div className="flex flex-col min-h-screen bg-black text-gray-100">
-      <header className="sticky px-4 lg:px-6 h-14 flex items-center border-b border-gray-800">
+      {/* <header className="sticky px-4 lg:px-6 h-14 flex items-center border-b border-gray-800">
         <Link className="flex items-center justify-center" href="/">
           <Hospital className="h-6 w-6 text-blue-400" />
           <span className="ml-2 text-xl font-bold text-blue-400">Aushadhi</span>
@@ -456,7 +456,59 @@ export default function Home() {
             Contact
           </Link>
         </nav>
-      </header>
+      </header> */}
+    <header className="sticky px-4 lg:px-6 h-14 flex items-center border-b border-gray-800 bg-white dark:bg-black">
+      <Link className="flex items-center justify-center" href="/">
+        <Hospital className="h-6 w-6 text-blue-400" />
+        <span className="ml-2 text-xl font-bold text-blue-400">Aushadhi</span>
+      </Link>
+      
+      <button 
+        className="ml-auto lg:hidden flex items-center p-2 text-gray-600 dark:text-gray-300"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+      >
+        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+      
+      <nav className={`lg:flex lg:items-center lg:space-x-6 lg:ml-auto ${menuOpen ? 'block' : 'hidden'} lg:block`}>
+        {/* Mobile Menu Dropdown */}
+        <div className={`fixed top-14 left-0 w-full bg-black text-white lg:hidden ${menuOpen ? 'block' : 'hidden'}`}>
+          <div className="flex flex-col p-4 space-y-2">
+            <Link className="text-lg font-medium hover:text-blue-400" href="#">
+              Features
+            </Link>
+            <Link className="text-lg font-medium hover:text-blue-400" href="#">
+              Hospitals
+            </Link>
+            <Link className="text-lg font-medium hover:text-blue-400" href="#">
+              About
+            </Link>
+            <Link className="text-lg font-medium hover:text-blue-400" href="#">
+              Contact
+            </Link>
+          </div>
+        </div>
+
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex lg:items-center lg:space-x-6 lg:ml-auto">
+          <Link className="text-sm font-medium hover:text-blue-400 transition-colors" href="#">
+            Features
+          </Link>
+          <Link className="text-sm font-medium hover:text-blue-400 transition-colors" href="#">
+            Hospitals
+          </Link>
+          <Link className="text-sm font-medium hover:text-blue-400 transition-colors" href="#">
+            About
+          </Link>
+          <Link className="text-sm font-medium hover:text-blue-400 transition-colors" href="#">
+            Contact
+          </Link>
+        </div>
+      </nav>
+    </header>
       <main className="flex-1">
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
