@@ -37,6 +37,8 @@ export default function LoginPage() {
                     <SelectItem value="patient">Patient</SelectItem>
                     <SelectItem value="doctor">Doctor</SelectItem>
                     <SelectItem value="inventory">Inventory Manager</SelectItem>
+                    <SelectItem value="inventory">Admin</SelectItem>
+
                   </SelectContent>
                 </Select>
               </div>

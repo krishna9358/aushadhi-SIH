@@ -4,3 +4,9 @@ started the boilerplate
 2. setup prisma
 3. start frontend components 
 4. 
+
+
+
+
+added prisma created user model
+done with signup route, can't work because of not declaration of POST and GET route, need to done authentication

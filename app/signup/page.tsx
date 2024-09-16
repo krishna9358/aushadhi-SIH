@@ -1,15 +1,58 @@
-"use client"
-import Link from "next/link"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Hospital, Eye, EyeOff } from "lucide-react"
+'use client';
+
+import Link from "next/link";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Hospital, Eye, EyeOff } from "lucide-react";
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 export default function SignupPage() {
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [role, setRole] = useState('USER'); // Default role selected
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    if (!termsAccepted) {
+      alert("You must accept the terms and privacy policy");
+      return;
+    }
+
+    try {
+      const res = await axios.post('/api/auth/signup', {
+        email,
+        password,
+        name,
+        role,
+      });
+
+      if (res.status === 200) {
+        router.push('/signin'); // Redirect to sign-in after successful sign-up
+      } else {
+        // Handle unexpected status code
+        console.error('Failed to sign up: ', res.statusText);
+      }
+    } catch (error) {
+      // Handle error
+      console.error('Failed to sign up: ', error);
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-black text-gray-100">
@@ -24,20 +67,20 @@ export default function SignupPage() {
           <div className="text-center">
             <h2 className="mt-6 text-3xl font-bold text-blue-400">Create your account</h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-4 rounded-md shadow-sm">
               <div>
                 <Label htmlFor="user-type" className="sr-only">
                   User Type
                 </Label>
-                <Select>
+                <Select onValueChange={(value) => setRole(value)}>
                   <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-gray-100">
                     <SelectValue placeholder="Select user type" />
                   </SelectTrigger>
                   <SelectContent className="bg-gray-800 border-gray-700 text-gray-100">
-                    <SelectItem value="patient">Patient</SelectItem>
-                    <SelectItem value="doctor">Doctor</SelectItem>
-                    <SelectItem value="inventory">Inventory Manager</SelectItem>
+                    <SelectItem value="USER">User</SelectItem>
+                    {/* <SelectItem value="ADMIN">DOCTOR</SelectItem> */}
+                    <SelectItem value="INVENTORY_MANAGER">Inventory Manager</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -53,6 +96,8 @@ export default function SignupPage() {
                   required
                   className="w-full bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400"
                   placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div>
@@ -67,6 +112,8 @@ export default function SignupPage() {
                   required
                   className="w-full bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400"
                   placeholder="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="relative">
@@ -81,6 +128,8 @@ export default function SignupPage() {
                   required
                   className="w-full bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
                   type="button"
@@ -106,6 +155,8 @@ export default function SignupPage() {
                   required
                   className="w-full bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400"
                   placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <button
                   type="button"
@@ -128,6 +179,8 @@ export default function SignupPage() {
                 type="checkbox"
                 className="h-4 w-4 rounded border-gray-700 bg-gray-800 text-blue-600 focus:ring-blue-500"
                 required
+                checked={termsAccepted}
+                onChange={() => setTermsAccepted(!termsAccepted)}
               />
               <Label htmlFor="terms-and-privacy" className="ml-2 block text-sm text-gray-300">
                 I agree to the{" "}
@@ -161,5 +214,5 @@ export default function SignupPage() {
         © 2023 Aushadhi. All rights reserved.
       </footer>
     </div>
-  )
+  );
 }
