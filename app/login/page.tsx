@@ -120,7 +120,7 @@ export default function LoginPage() {
         </div>
       </main>
       <footer className="py-6 text-center text-sm text-gray-400 border-t border-gray-800">
-        © 2023 Aushadhi. All rights reserved.
+        © 2024 Aushadhi. All rights reserved.
       </footer>
     </div>
   )
