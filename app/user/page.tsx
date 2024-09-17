@@ -8,7 +8,6 @@ import {
   FileText,
   User,
   Clock,
-  LogOut,
   X,
   Menu,
 } from "lucide-react";
@@ -21,6 +20,7 @@ import HealthRecord from "@/components/user/UserRecord";
 
 export default function UserDashboard() {
   const [activeTab, setActiveTab] = useState("hospitals");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -41,7 +41,7 @@ export default function UserDashboard() {
     }
   };
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="flex h-screen bg-black text-gray-100">
       {/* Sidebar */}
@@ -64,46 +64,46 @@ export default function UserDashboard() {
         <nav className="space-y-2">
           <Button
             variant={activeTab === "hospitals" ? "default" : "ghost"}
-            className="w-full justify-start"
+            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
             onClick={() => setActiveTab("hospitals")}
           >
             <Hospital className="mr-2 h-4 w-4" /> Hospitals
           </Button>
           <Button
             variant={activeTab === "appointments" ? "default" : "ghost"}
-            className="w-full justify-start"
+            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
             onClick={() => setActiveTab("appointments")}
           >
             <Calendar className="mr-2 h-4 w-4" /> Book Appointments
           </Button>
           <Button
             variant={activeTab === "healthRecord" ? "default" : "ghost"}
-            className="w-full justify-start"
+            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
             onClick={() => setActiveTab("healthRecord")}
           >
             <FileText className="mr-2 h-4 w-4" /> Health Record
           </Button>
           <Button
             variant={activeTab === "profile" ? "default" : "ghost"}
-            className="w-full justify-start"
+            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
             onClick={() => setActiveTab("profile")}
           >
             <User className="mr-2 h-4 w-4" /> User Profile
           </Button>
           <Button
             variant={activeTab === "timeTable" ? "default" : "ghost"}
-            className="w-full justify-start"
+            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
             onClick={() => setActiveTab("timeTable")}
           >
             <Clock className="mr-2 h-4 w-4" /> Time Table
           </Button>
         </nav>
-        <div className="absolute bottom-4 w-full">
+        <div className="absolute bottom-4">
           <Button
             variant="ghost"
-            className="w-full justify-start text-red-400 hover:text-red-300 hover:bg-red-400/10"
+            className="w-full justify-start text-red-400 hover:text-white-300 hover:bg-red-900"
           >
-            <LogOut className="mr-2 h-4 w-4" /> Logout
+           Logout
           </Button>
         </div>
       </aside>

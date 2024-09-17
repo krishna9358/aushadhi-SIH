@@ -40,35 +40,35 @@ export default function DoctorDashboard() {
         <nav className="space-y-2">
           <Button
             variant={activeTab === "profile" ? "default" : "ghost"}
-            className="w-full justify-start"
+            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
             onClick={() => setActiveTab("profile")}
           >
             <User className="mr-2 h-4 w-4" /> User Profile
           </Button>
           <Button
             variant={activeTab === "appointments" ? "default" : "ghost"}
-            className="w-full justify-start"
+            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
             onClick={() => setActiveTab("appointments")}
           >
             <Calendar className="mr-2 h-4 w-4" /> Appointments
           </Button>
           <Button
             variant={activeTab === "inventory" ? "default" : "ghost"}
-            className="w-full justify-start"
+            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
             onClick={() => setActiveTab("inventory")}
           >
             <Package className="mr-2 h-4 w-4" /> Inventory
           </Button>
           <Button
             variant={activeTab === "feedback" ? "default" : "ghost"}
-            className="w-full justify-start"
+            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
             onClick={() => setActiveTab("feedback")}
           >
             <MessageSquare className="mr-2 h-4 w-4" /> Feedback
           </Button>
           <Button
             variant={activeTab === "checkIns" ? "default" : "ghost"}
-            className="w-full justify-start"
+            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
             onClick={() => setActiveTab("checkIns")}
           >
             <CheckSquare className="mr-2 h-4 w-4" /> Daily Check-ins
