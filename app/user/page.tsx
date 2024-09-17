@@ -9,7 +9,7 @@ import {
   User,
   Clock,
   X,
-  Menu,
+  MenuIcon,
 } from "lucide-react";
 
 import HospitalList from "@/components/user/HospitalList";
@@ -116,7 +116,7 @@ export default function UserDashboard() {
           onClick={() => setSidebarOpen(true)}
           className="md:hidden mb-4 text-white border-gray-600"
         >
-          <Menu className="h-6 w-6" />
+                      <MenuIcon className="w-6 h-6" />
         </Button>
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">

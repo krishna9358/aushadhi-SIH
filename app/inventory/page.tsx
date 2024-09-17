@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Hospital, Bed, Pill, Droplet, Stethoscope, Users, QrCode, X, LogOut} from "lucide-react"
+import { Hospital, Bed, Pill, Droplet, Stethoscope, Users, QrCode, X, LogOut, MenuIcon} from "lucide-react"
 
 import BedStatus from "@/components/inventory/BedStatus"
 import MedicineInventory from "@/components/inventory/MedicineInventory"
@@ -121,7 +121,9 @@ export default function InventoryDashboard() {
           size="icon"
           onClick={() => setSidebarOpen(true)}
           className="md:hidden mb-4 text-white border-gray-600"
-        />
+        >
+            <MenuIcon className="w-6 h-6" />
+          </Button>
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}</h1>
           {renderContent()}
