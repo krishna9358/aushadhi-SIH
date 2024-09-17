@@ -7,10 +7,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { Hospital, Calendar,  User, Package, MessageSquare, CheckSquare, LogOut, Plus, Edit, Trash2 } from "lucide-react"
+import { Hospital, Calendar,  User, Package, MessageSquare, CheckSquare, LogOut, Plus, Edit, Trash2, X, MenuIcon } from "lucide-react"
 
 export default function DoctorDashboard() {
   const [activeTab, setActiveTab] = useState("profile")
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const renderContent = () => {
     switch (activeTab) {    
@@ -31,58 +32,79 @@ export default function DoctorDashboard() {
 
   return (
     <div className="flex h-screen bg-black text-gray-100">
-      {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 p-4">
-        <div className="flex items-center mb-6">
-          <Hospital className="h-6 w-6 text-blue-400 mr-2" />
-          <span className="text-xl font-bold text-blue-400">Aushadhi</span>
-        </div>
-        <nav className="space-y-2">
-          <Button
-            variant={activeTab === "profile" ? "default" : "ghost"}
-            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
-            onClick={() => setActiveTab("profile")}
-          >
-            <User className="mr-2 h-4 w-4" /> User Profile
-          </Button>
-          <Button
-            variant={activeTab === "appointments" ? "default" : "ghost"}
-            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
-            onClick={() => setActiveTab("appointments")}
-          >
-            <Calendar className="mr-2 h-4 w-4" /> Appointments
-          </Button>
-          <Button
-            variant={activeTab === "inventory" ? "default" : "ghost"}
-            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
-            onClick={() => setActiveTab("inventory")}
-          >
-            <Package className="mr-2 h-4 w-4" /> Inventory
-          </Button>
-          <Button
-            variant={activeTab === "feedback" ? "default" : "ghost"}
-            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
-            onClick={() => setActiveTab("feedback")}
-          >
-            <MessageSquare className="mr-2 h-4 w-4" /> Feedback
-          </Button>
-          <Button
-            variant={activeTab === "checkIns" ? "default" : "ghost"}
-            className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
-            onClick={() => setActiveTab("checkIns")}
-          >
-            <CheckSquare className="mr-2 h-4 w-4" /> Daily Check-ins
-          </Button>
-        </nav>
-        <div className="absolute bottom-4">
-          <Button variant="ghost" className="w-full justify-start text-red-400 hover:text-red-300 hover:bg-red-400/10">
-            <LogOut className="mr-2 h-4 w-4" /> Logout
-          </Button>
-        </div>
-      </aside>
+     {/* Sidebar */}
+<aside
+  className={`bg-gray-800 w-64 min-h-screen p-4 ${
+    sidebarOpen ? "block" : "hidden"
+  } md:block transition-all duration-200 ease-in-out`}
+>
+  <div className="flex items-center justify-between mb-6">
+    <div className="flex items-center">
+      <Hospital className="h-6 w-6 text-blue-400 mr-2" />
+      <span className="text-xl font-bold text-blue-400">Aushadhi</span>
+    </div>
+    <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(false)} className="md:hidden text-white">
+      <X className="h-6 w-6" />
+    </Button>
+  </div>
+  <nav className="space-y-2">
+    <Button
+      variant={activeTab === "profile" ? "default" : "ghost"}
+      className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
+      onClick={() => setActiveTab("profile")}
+    >
+      <User className="mr-2 h-4 w-4" /> User Profile
+    </Button>
+    <Button
+      variant={activeTab === "appointments" ? "default" : "ghost"}
+      className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
+      onClick={() => setActiveTab("appointments")}
+    >
+      <Calendar className="mr-2 h-4 w-4" /> Appointments
+    </Button>
+    <Button
+      variant={activeTab === "inventory" ? "default" : "ghost"}
+      className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
+      onClick={() => setActiveTab("inventory")}
+    >
+      <Package className="mr-2 h-4 w-4" /> Inventory
+    </Button>
+    <Button
+      variant={activeTab === "feedback" ? "default" : "ghost"}
+      className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
+      onClick={() => setActiveTab("feedback")}
+    >
+      <MessageSquare className="mr-2 h-4 w-4" /> Feedback
+    </Button>
+    <Button
+      variant={activeTab === "checkIns" ? "default" : "ghost"}
+      className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
+      onClick={() => setActiveTab("checkIns")}
+    >
+      <CheckSquare className="mr-2 h-4 w-4" /> Daily Check-ins
+    </Button>
+  </nav>
+  <div className="absolute bottom-4 w-full">
+    <Button
+      variant="ghost"
+      className="w-full justify-start text-red-400 hover:text-red-300 hover:bg-red-400/10"
+    >
+      <LogOut className="mr-2 h-4 w-4" /> Logout
+    </Button>
+  </div>
+</aside>
+
 
       {/* Main content */}
       <main className="flex-1 p-6 overflow-auto">
+      <Button
+          variant="default"
+          size="icon"
+          onClick={() => setSidebarOpen(true)}
+          className="md:hidden mb-4 text-white border-gray-600"
+        >
+            <MenuIcon className="w-6 h-6" />
+          </Button>
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}</h1>
           {renderContent()}
