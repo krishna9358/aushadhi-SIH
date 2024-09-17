@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Hospital, Eye, EyeOff } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
@@ -17,7 +16,6 @@ export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState('USER'); // Default role selected
   const [termsAccepted, setTermsAccepted] = useState(false);
   const router = useRouter();
 
@@ -38,8 +36,7 @@ export default function SignupPage() {
       const res = await axios.post('/api/auth/signup', {
         email,
         password,
-        name,
-        role,
+        name
       });
 
       if (res.status === 200) {
@@ -69,21 +66,6 @@ export default function SignupPage() {
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-4 rounded-md shadow-sm">
-              <div>
-                <Label htmlFor="user-type" className="sr-only">
-                  User Type
-                </Label>
-                <Select onValueChange={(value) => setRole(value)}>
-                  <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-gray-100">
-                    <SelectValue placeholder="Select user type" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700 text-gray-100">
-                    <SelectItem value="USER">User</SelectItem>
-                    {/* <SelectItem value="ADMIN">DOCTOR</SelectItem> */}
-                    <SelectItem value="INVENTORY_MANAGER">Inventory Manager</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
               <div>
                 <Label htmlFor="full-name" className="sr-only">
                   Full Name
@@ -193,7 +175,7 @@ export default function SignupPage() {
                 </Link>
               </Label>
             </div>
-
+                  <p className=" text-xs "><span className="text-red-700">Please Note!</span> This sign up is only for patient. </p>
             <div>
               <Button type="submit" className="w-full bg-blue-600 text-white hover:bg-blue-700">
                 Sign up

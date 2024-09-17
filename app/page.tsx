@@ -521,7 +521,7 @@ export default function Home() {
                 {/* <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none ">
                   Streamline Your Hospital <span className="text-blue-400">Management</span>
                 </h1>  */}
-                <TypewriterEffectSmooth words={words}/>
+                <TypewriterEffectSmooth words={words} />
                 <p className="mx-auto max-w-[700px] text-gray-400 md:text-xl">
                   Efficient healthcare management for hospitals and seamless experience for patients.
                 </p>
