@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { Hospital, Calendar,  User, Package, MessageSquare, CheckSquare, LogOut, Plus, Edit, Trash2, X, MenuIcon } from "lucide-react"
+import { Hospital, Calendar,  User, CheckSquare, LogOut, Plus, Edit, Trash2, X, MenuIcon } from "lucide-react"
 
 export default function DoctorDashboard() {
   const [activeTab, setActiveTab] = useState("profile")
@@ -20,10 +20,10 @@ export default function DoctorDashboard() {
         return <UserProfile />
       case "appointments":
         return <Appointments />
-      case "inventory":
-        return <Inventory />
-      case "feedback":
-        return <Feedback />
+      // case "inventory":
+        // return <Inventory />
+      // case "feedback":
+      //   return <Feedback />
       case "checkIns":
         return <DailyCheckIns />
       default:
@@ -69,20 +69,20 @@ export default function DoctorDashboard() {
     >
       <Calendar className="mr-2 h-4 w-4" /> Appointments
     </Button>
-    <Button
+    {/* <Button
       variant={activeTab === "inventory" ? "default" : "ghost"}
       className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
       onClick={() => setActiveTab("inventory")}
     >
       <Package className="mr-2 h-4 w-4" /> Inventory
-    </Button>
-    <Button
+    </Button> */}
+    {/* <Button
       variant={activeTab === "feedback" ? "default" : "ghost"}
       className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
       onClick={() => setActiveTab("feedback")}
     >
       <MessageSquare className="mr-2 h-4 w-4" /> Feedback
-    </Button>
+    </Button> */}
     <Button
       variant={activeTab === "checkIns" ? "default" : "ghost"}
       className="w-full justify-start transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105"
