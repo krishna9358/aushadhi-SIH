@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,7 +13,7 @@ import { Hospital, Calendar,  User, Package, MessageSquare, CheckSquare, LogOut,
 export default function DoctorDashboard() {
   const [activeTab, setActiveTab] = useState("profile")
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const router = useRouter();
   const renderContent = () => {
     switch (activeTab) {    
       case "profile":
@@ -28,6 +29,12 @@ export default function DoctorDashboard() {
       default:
         return <UserProfile />
     }
+  }
+
+  const handleLogout = () => {
+    // Clear session or local storage if necessary
+    // Redirect to the sign-in page
+    router.push("/login")
   }
 
   return (
@@ -87,7 +94,8 @@ export default function DoctorDashboard() {
   <div className="absolute bottom-4 w-full">
     <Button
       variant="ghost"
-      className="w-full justify-start text-red-400 hover:text-red-300 hover:bg-red-400/10"
+      className="w-full justify-start text-red-400 hover:text-white-300 hover:bg-red-900"
+      onClick={handleLogout}
     >
       <LogOut className="mr-2 h-4 w-4" /> Logout
     </Button>

@@ -1,14 +1,52 @@
 "use client"
-import Link from "next/link"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Hospital, Eye, EyeOff } from "lucide-react"
 
+// Hardcoded demo users
+const demoUsers = [
+  { email: "patient@aushadhi.com", password: "patient123", role: "patient" },
+  { email: "doctor@aushadhi.com", password: "doctor123", role: "doctor" },
+  { email: "inventory@aushadhi.com", password: "inventory123", role: "inventory" },
+  { email: "admin@aushadhi.com", password: "admin123", role: "admin" },
+]
+
 export default function LoginPage() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [userType, setUserType] = useState("")
   const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState("")
+  const router = useRouter()
+
+  const handleLogin = (e : React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    
+    // Find matching demo user
+    const user = demoUsers.find(
+      (u) => u.email === email && u.password === password && u.role === userType
+    )
+    
+    if (user) {
+      // Redirect based on user role
+      if (user.role === "patient") {
+        router.push("/dashboard/user")
+      } else if (user.role === "doctor") {
+        router.push("/dashboard/doctor")
+      } else if (user.role === "inventory") {
+        router.push("/dashboard/inventory")
+      } else if (user.role === "admin") {
+        router.push("/dashboard/admin")
+      }
+    } else {
+      setError("Invalid credentials or user type.")
+    }
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-black text-gray-100">
@@ -23,13 +61,13 @@ export default function LoginPage() {
           <div className="text-center">
             <h2 className="mt-6 text-3xl font-bold text-blue-400">Sign in to your account</h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" onSubmit={handleLogin}>
             <div className="space-y-4 rounded-md shadow-sm">
               <div>
                 <Label htmlFor="user-type" className="sr-only">
                   User Type
                 </Label>
-                <Select>
+                <Select onValueChange={(value) => setUserType(value)}>
                   <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-gray-100">
                     <SelectValue placeholder="Select user type" />
                   </SelectTrigger>
@@ -37,8 +75,7 @@ export default function LoginPage() {
                     <SelectItem value="patient">Patient</SelectItem>
                     <SelectItem value="doctor">Doctor</SelectItem>
                     <SelectItem value="inventory">Inventory Manager</SelectItem>
-                    <SelectItem value="inventory">Admin</SelectItem>
-
+                    <SelectItem value="admin">Admin</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -54,6 +91,8 @@ export default function LoginPage() {
                   required
                   className="w-full bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400"
                   placeholder="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="relative">
@@ -68,6 +107,8 @@ export default function LoginPage() {
                   required
                   className="w-full bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
                   type="button"
@@ -82,6 +123,8 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
+
+            {error && <p className="text-red-500 text-sm">{error}</p>}
 
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -111,7 +154,7 @@ export default function LoginPage() {
           </form>
           <div className="text-center">
             <p className="mt-2 text-sm text-gray-400">
-              Dont have an account?{" "}
+              Don’t have an account?{" "}
               <Link href="/signup" className="font-medium text-blue-400 hover:text-blue-300">
                 Sign up
               </Link>

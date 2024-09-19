@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation"
 import {
   Hospital,
   Calendar,
@@ -19,6 +20,7 @@ import Appointments from "@/components/user/Appointments";
 import HealthRecord from "@/components/user/UserRecord";
 
 export default function UserDashboard() {
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState("hospitals");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -40,6 +42,12 @@ export default function UserDashboard() {
         return <HospitalList />;
     }
   };
+
+  const handleLogout = () => {
+    // Clear session or local storage if necessary
+    // Redirect to the sign-in page
+    router.push("/login")
+  }
 
 
   return (
@@ -101,7 +109,8 @@ export default function UserDashboard() {
         <div className="absolute bottom-4">
           <Button
             variant="ghost"
-            className="w-full justify-start text-red-400 hover:text-white-300 hover:bg-red-900"
+            className="w-full justify-start text-red-400 hover:text-white-300 hover:bg-red-900" 
+            onClick={handleLogout}
           >
            Logout
           </Button>
