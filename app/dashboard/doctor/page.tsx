@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { Hospital, Calendar,  User, CheckSquare, LogOut, Plus, Edit, Trash2, X, MenuIcon } from "lucide-react"
+import { Hospital, Calendar,  User, CheckSquare, LogOut, Plus, X, MenuIcon } from "lucide-react"
 
 export default function DoctorDashboard() {
   const [activeTab, setActiveTab] = useState("profile")
@@ -226,140 +226,140 @@ function Appointments() {
   )
 }
 
-function Inventory() {
-  return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <Input
-          className="max-w-sm bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400"
-          placeholder="Search inventory..."
-          type="search"
-        />
-        <Button>
-          <Plus className="mr-2 h-4 w-4" /> Request Item
-        </Button>
-      </div>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Item Name</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Quantity</TableHead>
-            <TableHead>Last Updated</TableHead>
-            <TableHead>Actions</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell>Stethoscope</TableCell>
-            <TableCell>Medical Equipment</TableCell>
-            <TableCell>5</TableCell>
-            <TableCell>2023-06-01</TableCell>
-            <TableCell>
-              <Button variant="ghost" size="sm">
-                <Edit className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm">
-                <Trash2 className="h-4 w-4" />
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Blood Pressure Cuff</TableCell>
-            <TableCell>Medical Equipment</TableCell>
-            <TableCell>3</TableCell>
-            <TableCell>2023-05-28</TableCell>
-            <TableCell>
-              <Button variant="ghost" size="sm">
-                <Edit className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm">
-                <Trash2 className="h-4 w-4" />
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Prescription Pads</TableCell>
-            <TableCell>Office Supplies</TableCell>
-            <TableCell>100</TableCell>
-            <TableCell>2023-06-03</TableCell>
-            <TableCell>
-              <Button variant="ghost" size="sm">
-                <Edit className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm">
-                <Trash2 className="h-4 w-4" />
-              </Button>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </div>
-  )
-}
+// function Inventory() {
+//   return (
+//     <div className="space-y-6">
+//       <div className="flex justify-between items-center">
+//         <Input
+//           className="max-w-sm bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400"
+//           placeholder="Search inventory..."
+//           type="search"
+//         />
+//         <Button>
+//           <Plus className="mr-2 h-4 w-4" /> Request Item
+//         </Button>
+//       </div>
+//       <Table>
+//         <TableHeader>
+//           <TableRow>
+//             <TableHead>Item Name</TableHead>
+//             <TableHead>Category</TableHead>
+//             <TableHead>Quantity</TableHead>
+//             <TableHead>Last Updated</TableHead>
+//             <TableHead>Actions</TableHead>
+//           </TableRow>
+//         </TableHeader>
+//         <TableBody>
+//           <TableRow>
+//             <TableCell>Stethoscope</TableCell>
+//             <TableCell>Medical Equipment</TableCell>
+//             <TableCell>5</TableCell>
+//             <TableCell>2023-06-01</TableCell>
+//             <TableCell>
+//               <Button variant="ghost" size="sm">
+//                 <Edit className="h-4 w-4" />
+//               </Button>
+//               <Button variant="ghost" size="sm">
+//                 <Trash2 className="h-4 w-4" />
+//               </Button>
+//             </TableCell>
+//           </TableRow>
+//           <TableRow>
+//             <TableCell>Blood Pressure Cuff</TableCell>
+//             <TableCell>Medical Equipment</TableCell>
+//             <TableCell>3</TableCell>
+//             <TableCell>2023-05-28</TableCell>
+//             <TableCell>
+//               <Button variant="ghost" size="sm">
+//                 <Edit className="h-4 w-4" />
+//               </Button>
+//               <Button variant="ghost" size="sm">
+//                 <Trash2 className="h-4 w-4" />
+//               </Button>
+//             </TableCell>
+//           </TableRow>
+//           <TableRow>
+//             <TableCell>Prescription Pads</TableCell>
+//             <TableCell>Office Supplies</TableCell>
+//             <TableCell>100</TableCell>
+//             <TableCell>2023-06-03</TableCell>
+//             <TableCell>
+//               <Button variant="ghost" size="sm">
+//                 <Edit className="h-4 w-4" />
+//               </Button>
+//               <Button variant="ghost" size="sm">
+//                 <Trash2 className="h-4 w-4" />
+//               </Button>
+//             </TableCell>
+//           </TableRow>
+//         </TableBody>
+//       </Table>
+//     </div>
+//   )
+// }
 
-function Feedback() {
-  return (
-    <div className="space-y-6">
-      <Card className="bg-gray-800 border-gray-700">
-        <CardHeader>
-          <CardTitle>Patient Feedback</CardTitle>
-          <CardDescription>Recent feedback from your patients</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Patient Name</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead>Rating</TableHead>
-                <TableHead>Comment</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell>Sarah Johnson</TableCell>
-                <TableCell>2023-06-01</TableCell>
-                <TableCell>5/5</TableCell>
-                <TableCell>Dr. Smith was very thorough and explained everything clearly.</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Michael Brown</TableCell>
-                <TableCell>2023-05-28</TableCell>
-                <TableCell>4/5</TableCell>
-                <TableCell>Good experience overall, but had to wait a bit longer than expected.</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Emily Davis</TableCell>
-                <TableCell>2023-05-25</TableCell>
-                <TableCell>5/5</TableCell>
-                <TableCell>Excellent care and attention to detail. Highly recommend!</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-      <Card className="bg-gray-800 border-gray-700">
-        <CardHeader>
-          <CardTitle>Respond to Feedback</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="patientName">Patient Name</Label>
-              <Input id="patientName" className="bg-gray-700 border-gray-600" />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="response">Your Response</Label>
-              <Textarea id="response" className="bg-gray-700 border-gray-600" />
-            </div>
-            <Button type="submit">Send Response</Button>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
-  )
-}
+// function Feedback() {
+//   return (
+//     <div className="space-y-6">
+//       <Card className="bg-gray-800 border-gray-700">
+//         <CardHeader>
+//           <CardTitle>Patient Feedback</CardTitle>
+//           <CardDescription>Recent feedback from your patients</CardDescription>
+//         </CardHeader>
+//         <CardContent>
+//           <Table>
+//             <TableHeader>
+//               <TableRow>
+//                 <TableHead>Patient Name</TableHead>
+//                 <TableHead>Date</TableHead>
+//                 <TableHead>Rating</TableHead>
+//                 <TableHead>Comment</TableHead>
+//               </TableRow>
+//             </TableHeader>
+//             <TableBody>
+//               <TableRow>
+//                 <TableCell>Sarah Johnson</TableCell>
+//                 <TableCell>2023-06-01</TableCell>
+//                 <TableCell>5/5</TableCell>
+//                 <TableCell>Dr. Smith was very thorough and explained everything clearly.</TableCell>
+//               </TableRow>
+//               <TableRow>
+//                 <TableCell>Michael Brown</TableCell>
+//                 <TableCell>2023-05-28</TableCell>
+//                 <TableCell>4/5</TableCell>
+//                 <TableCell>Good experience overall, but had to wait a bit longer than expected.</TableCell>
+//               </TableRow>
+//               <TableRow>
+//                 <TableCell>Emily Davis</TableCell>
+//                 <TableCell>2023-05-25</TableCell>
+//                 <TableCell>5/5</TableCell>
+//                 <TableCell>Excellent care and attention to detail. Highly recommend!</TableCell>
+//               </TableRow>
+//             </TableBody>
+//           </Table>
+//         </CardContent>
+//       </Card>
+//       <Card className="bg-gray-800 border-gray-700">
+//         <CardHeader>
+//           <CardTitle>Respond to Feedback</CardTitle>
+//         </CardHeader>
+//         <CardContent>
+//           <form className="space-y-4">
+//             <div className="space-y-2">
+//               <Label htmlFor="patientName">Patient Name</Label>
+//               <Input id="patientName" className="bg-gray-700 border-gray-600" />
+//             </div>
+//             <div className="space-y-2">
+//               <Label htmlFor="response">Your Response</Label>
+//               <Textarea id="response" className="bg-gray-700 border-gray-600" />
+//             </div>
+//             <Button type="submit">Send Response</Button>
+//           </form>
+//         </CardContent>
+//       </Card>
+//     </div>
+//   )
+// }
 
 function DailyCheckIns() {
   return (
