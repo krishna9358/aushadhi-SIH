@@ -10,10 +10,10 @@ import { Hospital, Eye, EyeOff } from "lucide-react"
 
 // Hardcoded demo users
 const demoUsers = [
-  { email: "patient@aushadhi.com", password: "patient123", role: "patient" },
-  { email: "doctor@aushadhi.com", password: "doctor123", role: "doctor" },
-  { email: "inventory@aushadhi.com", password: "inventory123", role: "inventory" },
-  { email: "admin@aushadhi.com", password: "admin123", role: "admin" },
+  { email: "patient@aushadhi.com", password: "sih@1234", role: "patient" },
+  { email: "doctor@aushadhi.com", password: "sih@1234", role: "doctor" },
+  { email: "inventory@aushadhi.com", password: "sih@1234", role: "inventory" },
+  { email: "admin@aushadhi.com", password: "sih@1234", role: "admin" },
 ]
 
 export default function LoginPage() {
