@@ -36,7 +36,7 @@ export default function SuperuserAdminDashboard() {
   ]
 
   return (
-    <div className="flex h-screen bg-gray-900 text-gray-100">
+    <div className="flex h-screen bg-black text-gray-100">
       {/* Sidebar */}
       <aside
         className={`bg-gray-800 w-64 min-h-screen p-4 ${
