@@ -91,7 +91,7 @@ export default function DoctorDashboard() {
       <CheckSquare className="mr-2 h-4 w-4" /> Daily Check-ins
     </Button>
   </nav>
-  <div className="absolute bottom-4 w-full">
+  <div className="absolute bottom-4 ">
     <Button
       variant="ghost"
       className="w-full justify-start text-red-400 hover:text-white-300 hover:bg-red-900"
