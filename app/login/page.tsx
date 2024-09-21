@@ -8,6 +8,11 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Hospital, Eye, EyeOff } from "lucide-react"
 
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
+
+import {signIn} from 'next-auth/react';
+
 // Hardcoded demo users
 const demoUsers = [
   { email: "patient@aushadhi.com", password: "sih@1234", role: "patient" },
@@ -23,6 +28,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState("")
   const router = useRouter()
+  
 
   const handleLogin = (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -47,6 +53,13 @@ export default function LoginPage() {
       setError("Invalid credentials or user type.")
     }
   }
+  const { status } = useSession();
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/dashboard/inventory");
+    }
+  }, [status, router]); 
 
   return (
     <div className="flex flex-col min-h-screen bg-black text-gray-100">
@@ -152,9 +165,13 @@ export default function LoginPage() {
               </Button>
             </div>
           </form>
+
+          <hr></hr>
+
+          <Button onClick={() => signIn('google')}>Sign in with google</Button>
           <div className="text-center">
             <p className="mt-2 text-sm text-gray-400">
-              Don’t have an account?{" "}
+              Dont have an account?{" "}
               <Link href="/signup" className="font-medium text-blue-400 hover:text-blue-300">
                 Sign up
               </Link>

@@ -11,9 +11,14 @@ import Management from "@/components/inventory/Management"
 import OPDStatus from "@/components/inventory/OpdStatus"
 import DoctorStatus from "@/components/inventory/DoctorStatus"
 import QRCodeGenerator from "@/components/inventory/QRCodeGenerator"
+import {  signOut } from 'next-auth/react';
+import { useSession } from "next-auth/react";
+
+import { useEffect } from "react";
+
 
 export default function InventoryDashboard() {
-
+  const {  status } = useSession();
   const router = useRouter()
   const [activeTab, setActiveTab] = useState("beds")
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -38,12 +43,19 @@ export default function InventoryDashboard() {
         return <BedStatus />
     }
   }
+  
 
   const handleLogout = () => {
     // Clear session or local storage if necessary
     // Redirect to the sign-in page
     router.push("/login")
   }
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/login");
+    }
+  }, [status, router]);
 
 
 
@@ -116,7 +128,10 @@ export default function InventoryDashboard() {
     </Button>
   </nav>
   <div className="absolute bottom-4">
-          <Button variant="ghost" className="w-full justify-start text-red-400 hover:text-red-300 hover:bg-red-400/10" onClick={handleLogout}>
+          <Button variant="ghost" className="w-full justify-start text-red-400 hover:text-red-300 hover:bg-red-400/10" onClick={async (e) => {
+    e.preventDefault();
+   await signOut();
+   handleLogout;}}>
             <LogOut className="mr-2 h-4 w-4" /> Logout
           </Button>
   </div>
